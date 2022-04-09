@@ -15,7 +15,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "rootDir": ".",
-    "jsx": "react",
+    "jsx": "preserve",
     "jsxFactory": "React.createElement",
     "allowJs": true,
     "resolveJsonModule": true,
@@ -41,12 +41,29 @@
       ],
       "@service/*": [
         "src/service/*"
-      ],
+      ]
     },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "isolatedModules": true
   },
   "exclude": [
     "node_modules",
     "dist"
   ],
-  "compileOnSave": false
+  "compileOnSave": false,
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

@@ -14,7 +14,7 @@ import {
   CHECK_RIDIO_Y,
   CHECK_RIDIO
 } from "../constans";
-import "./index.scss";
+import styles from"./index.module.scss";
 import { getGlobalData, getStorageData } from "@utils";
 import { SafeAreaView, StatusBar } from "@components";
 
@@ -23,7 +23,7 @@ export default class HouseLoanComputeMontylyPayments extends Component<
   any
 > {
   page: number = 1;
-  total: number;
+  total: number = 0;
 
   constructor(props: any) {
     super(props);
@@ -102,76 +102,76 @@ export default class HouseLoanComputeMontylyPayments extends Component<
       tip
     } = this.state;
     return (
-      <SafeAreaView className="montyly-payments">
+      <SafeAreaView className={styles["montyly-payments"]}>
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
         <ScrollView
-          className="scroll-content"
+          className={styles["scroll-content"]}
           scrollY
           enableBackToTop
           onScrollToLower={this.onScrollToLower}
         >
-          <View className="content">
-            <View className="title">
-              <Text className="title-text">贷款总额</Text>
-              <Text className="title-amount">{loanAmount}</Text>
-              <Text className="title-text">万</Text>
+          <View className={styles["content"]}>
+            <View className={styles["title"]}>
+              <Text className={styles["title-text"]}>贷款总额</Text>
+              <Text className={styles["title-amount"]}>{loanAmount}</Text>
+              <Text className={styles["title-text"]}>万</Text>
             </View>
-            <Text className="tip-info">{tip}</Text>
+            <Text className={styles["tip-info"]}>{tip}</Text>
 
-            <View className="compared">
+            <View className={styles["compared"]}>
               {MONTY_DATA.map((item: any) => {
                 return (
-                  <View className="equal-box" key={item.type}>
-                    <Text className="equal-box-title">{item.title}</Text>
-                    <View className="equal-box-wrap">
-                      <Text className="equal-box-wrap-title">
+                  <View className={styles["equal-box"]} key={item.type}>
+                    <Text className={styles["equal-box-title"]}>{item.title}</Text>
+                    <View className={styles["equal-box-wrap"]}>
+                      <Text className={styles["equal-box-wrap-title"]}>
                         {MONTY_TITLE[item.type]}
                       </Text>
-                      <Text className="amount">
+                      <Text className={styles["amount"]}>
                         {this.state[item.type].payMonth}
                       </Text>
                     </View>
-                    <View className="equal-box-wrap">
-                      <Text className="equal-box-wrap-title">
+                    <View className={styles["equal-box-wrap"]}>
+                      <Text className={styles["equal-box-wrap-title"]}>
                         利息总额（万元）
                       </Text>
-                      <Text className="amount">
+                      <Text className={styles["amount"]}>
                         {this.state[item.type].totalInterest}
                       </Text>
                     </View>
-                    <View className="equal-box-wrap">
-                      <Text className="equal-box-wrap-title">特点</Text>
-                      <Text className="advant">
+                    <View className={styles["equal-box-wrap"]}>
+                      <Text className={styles["equal-box-wrap-title"]}>特点</Text>
+                      <Text className={styles["advant"]}>
                         {item.type !== "equalPrincipal"
                           ? "每月月供稳定"
                           : `每月递减${this.state[item.type].monthDecline}元`}
                       </Text>
                     </View>
                     <View
-                      className="equal-box-wrap btn-wrap"
+                      className={styles["equal-box-wrap btn-wrap"]}
                       onClick={this.seleceFirst(item)}
                     >
                       <Image
-                        className="radio"
+                        className={styles["radio"]}
                         src={
                           item.type === checked ? CHECK_RIDIO_Y : CHECK_RIDIO
                         }
                       />
-                      <Text className="btn-wrap-text">优先看{item.title}</Text>
+                      <Text className={styles["btn-wrap-text"]}>优先看{item.title}</Text>
                     </View>
                   </View>
                 );
               })}
             </View>
 
-            <View className="pay-monty">
-              <Text className="pay-monty-title">还款细则</Text>
-              <View className="line line-first">
-                <Text className="line-text line-monty" />
-                <Text className="line-text line-amount line-first-title">
+            <View className={styles["pay-monty"]}>
+              <Text className={styles["pay-monty-title"]}>还款细则</Text>
+              <View className={styles["line line-first"]}>
+                <Text className={styles["line-text line-monty"]} />
+                <Text className={styles["line-text line-amount line-first-title"]}>
                   等额本息
                 </Text>
-                <Text className="line-text line-amount line-first-title">
+                <Text className={styles["line-text line-amount line-first-title"]}>
                   等额本金
                 </Text>
               </View>
@@ -183,11 +183,11 @@ export default class HouseLoanComputeMontylyPayments extends Component<
                       index % 2 === 0 ? "line-even" : "line-odd"
                     }`}
                   >
-                    <Text className="line-text line-monty">
+                    <Text className={styles["line-text line-monty"]}>
                       第{index + 1}个月
                     </Text>
-                    <Text className="line-text line-amount">￥{item}</Text>
-                    <Text className="line-text line-amount">
+                    <Text className={styles["line-text line-amount"]}>￥{item}</Text>
+                    <Text className={styles["line-text line-amount"]}>
                       ￥{principalList[index]}
                     </Text>
                   </View>

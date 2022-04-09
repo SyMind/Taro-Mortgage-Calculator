@@ -8,7 +8,8 @@
 import React, { FunctionComponent } from "react";
 import { ComponentOptions } from "@tarojs/taro";
 import { View, Text } from "@tarojs/components";
-import "./index.scss";
+import classNames from 'classnames';
+import styles from "./index.module.scss";
 
 interface TitleTplProps {
   title: string;
@@ -32,27 +33,25 @@ export const TitleTpl: FunctionComponent<TitleTplProps> & {
   };
 
   return (
-    <View className="compute-way">
-      <Text className="compute-way__title">{title}</Text>
-      <View className="compute-way__way-box">
+    <View className={styles["compute-way"]}>
+      <Text className={styles["compute-way__title"]}>{title}</Text>
+      <View className={styles["compute-way__way-box"]}>
         {data.map((item: any, index: number) => {
           return (
             <View
               key={item.id}
               onClick={handleClick(item, index)}
-              className="pseudo-content"
+              className={styles["pseudo-content"]}
             >
               <Text
-                className={`pseudo-content__text ${
-                  activeIndex === item.index
-                    ? "pseudo-content__text-active"
-                    : ""
-                }`}
+                className={classNames(styles["pseudo-content__text"], {
+                  [styles["pseudo-content__text-active"]]: activeIndex === item.index
+                })}
               >
                 {item.name}
               </Text>
               {activeIndex === item.index && (
-                <View className="pseudo-content__pseudo" />
+                <View className={styles["pseudo-content__pseudo"]} />
               )}
             </View>
           );

@@ -62,6 +62,9 @@ Taro 3 - MortgageCalculator
   
   # 安装依赖
   yarn
+
+  # 运行 nextjs
+  yarn dev:nextjs
   
   # 运行RN 默认端口8081
   yarn dev:rn

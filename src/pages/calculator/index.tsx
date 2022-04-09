@@ -8,7 +8,7 @@
 import React, { Component } from "react";
 import Taro, { getCurrentInstance } from "@tarojs/taro";
 import { View, Text, Input } from "@tarojs/components";
-import "./index.scss";
+import styles from "./index.module.scss";
 import {
   KeyboardAwareScrollView,
   SafeAreaView,
@@ -747,24 +747,24 @@ export default class HouseLoanCompute extends Component<any, any> {
     } = this.state;
     const { houseTotal, downPayRate } = params;
     return (
-      <SafeAreaView className="calculator">
+      <SafeAreaView className={styles["calculator"]}>
         <StatusBar backgroundColor={backgroundColor} barStyle="dark-content" />
         {keyboardHeight >= 0 && (
-          <View className="fixed">
-            <View className="mask" />
+          <View className={styles["fixed"]}>
+            <View className={styles["mask"]} />
 
             <View
-              className="keyboard-box"
+              className={styles["keyboard-box"]}
               style={{
                 bottom: isAndriod() ? 0 : keyboardHeight
               }}
             >
-              <Text className="keyboard-box-text">请输入</Text>
+              <Text className={styles["keyboard-box-text"]}>请输入</Text>
               <KeyboardAwareScrollView
                 keyboardShouldPersistTaps="always"
                 enableAutomaticScroll={false}
                 onKeyboardDidShow={this.onKeyboardDidShow}
-                className="keyboard-box-view"
+                className={styles["keyboard-box-view"]}
                 onKeyboardDidHide={this.onKeyboardDidHide}
               >
                 <Input
@@ -773,7 +773,7 @@ export default class HouseLoanCompute extends Component<any, any> {
                   type="number"
                   // 针对小程序中底部fixed input被遮盖一部分 设置光标距离键盘距离
                   cursorSpacing={10}
-                  className="keyboard-box-input"
+                  className={styles["keyboard-box-input"]}
                   focus
                   style={{
                     // @ts-ignore 针对安卓文字显示不全
@@ -786,7 +786,7 @@ export default class HouseLoanCompute extends Component<any, any> {
               </KeyboardAwareScrollView>
 
               <Text
-                className="keyboard-box-confirm"
+                className={styles["keyboard-box-confirm"]}
                 onClick={this.downPayRateConfirm}
               >
                 确定
@@ -818,7 +818,7 @@ export default class HouseLoanCompute extends Component<any, any> {
             />
           )}
 
-          <View className="content">
+          <View className={styles["content"]}>
             <TitleTpl
               title="计算方式"
               data={COMPUTE_WAY_TITLE}
@@ -857,15 +857,15 @@ export default class HouseLoanCompute extends Component<any, any> {
           shadowOpacity={0.1}
           shadowRadius={1}
           elevation={5}
-          className="compute"
+          className={styles["compute"]}
           style={{
             opacity: btnOpacity,
           }}
           boxShadow="0px 2px 8px 0px rgba(211,215,218,1)"
         >
           <SafeAreaView>
-            <View className="compute-btn" onClick={this.submit}>
-              <Text className="compute-btn-text">开始计算</Text>
+            <View className={styles["compute-btn"]} onClick={this.submit}>
+              <Text className={styles["compute-btn-text"]}>开始计算</Text>
             </View>
           </SafeAreaView>
         </BoxShadow>

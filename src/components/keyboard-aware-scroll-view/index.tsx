@@ -5,9 +5,7 @@
  * @Last Modified by: qiuz
  */
 
-import React from "react";
 import { View } from "@tarojs/components";
-import "./index.scss";
 
 let KeyboardAwareScrollView: any;
 if (IS_RN) {
@@ -23,8 +21,8 @@ function TaroKeyboardAwareScrollView(props: any) {
       </KeyboardAwareScrollView>
     );
   }
-  const { className = "" } = props;
-  return <View className={`${className}`}>{props.children}</View>;
+  const { className } = props;
+  return <View className={className}>{props.children}</View>;
 }
 
 TaroKeyboardAwareScrollView.options = {

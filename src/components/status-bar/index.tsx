@@ -5,7 +5,6 @@
  * @Last Modified by: qiuz
  */
 
-import React from "react";
 import { View } from '@tarojs/components';
 import { isAndriod } from '@utils';
 

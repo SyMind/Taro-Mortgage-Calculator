@@ -9,8 +9,9 @@
 import React, { FunctionComponent } from "react";
 import { ComponentOptions } from "@tarojs/taro";
 import { View, Image } from "@tarojs/components";
-import { LinearGradientProps } from "react-native-linear-gradient";
-import "./index.scss";
+import type { LinearGradientProps } from "react-native-linear-gradient";
+import classNames from 'classnames';
+import styles from "./index.module.scss";
 import { ITouchEvent } from "@tarojs/components/types/common";
 import { isArray } from "@utils";
 
@@ -76,11 +77,11 @@ const TaroLinearGradient: FunctionComponent<
     }
     return (
       <View
-        className={`linear-gradient__box ${className}`}
+        className={classNames(styles["linear-gradient__box"], className)}
         style={propsStyle}
         onClick={onClick}
       >
-        <Image src={src} className="linear-gradient__box__img" />
+        <Image src={src} className={styles["linear-gradient__box__img"]} />
         {props.children}
       </View>
     );
@@ -88,21 +89,21 @@ const TaroLinearGradient: FunctionComponent<
   let background = color;
   if (useColors) {
     const colorString = LinearGradientColors.map(
-      (colorStr: string, index: number) =>
+      (colorStr: string | number, index: number) =>
         `${colorStr} ${index === len - 1 ? "100" : (index / len) * 100}%`
     ).join(",");
     background = `linear-gradient(${angle}deg, ${colorString})`;
   }
   return (
     <View
-      className={`linear-gradient__box ${IS_WEAPP ? "^" : ""}${className}`}
+      className={classNames(styles["linear-gradient__box"], className)}
       style={{ ...(!src ? { background } : ""), ...(style as object) }}
     >
       {src && (
         <Image
           src={src}
           mode="aspectFill"
-          className="linear-gradient__box__img"
+          className={styles["linear-gradient__box__img"]}
         />
       )}
       {props.children}

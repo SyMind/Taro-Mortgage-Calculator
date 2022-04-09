@@ -8,7 +8,7 @@
 
 import React, { Component } from "react";
 import { View, Text, Image, Input, Button } from "@tarojs/components";
-import "./index.scss";
+import styles from "./index.module.scss";
 import { RIGHT_ARROW } from "./constans";
 import { Pciker, Modal } from "@components";
 
@@ -99,26 +99,26 @@ export class LineWrap extends Component<LineWrapProps, any> {
       _item => type.indexOf(_item && _item.renderType) > -1
     );
     return (
-      <View className="loan-content">
+      <View className={styles["loan-content"]}>
         {explainData.title && (
           <Modal
-            className="compute-modal"
+            className={styles["compute-modal"]}
             visible={visible}
             closable
             transparent
             animationType="none"
             onClose={this.closeModal}
           >
-            <View className="explain">
-              <Text className="explain-title">{explainData.title}</Text>
-              <View className="explain-tip">
-                <Text className="explain-tip-text">
+            <View className={styles["explain"]}>
+              <Text className={styles["explain-title"]}>{explainData.title}</Text>
+              <View className={styles["explain-tip"]}>
+                <Text className={styles["explain-tip-text"]}>
                   {explainData.content}
                 </Text>
               </View>
 
-              <Button className="explain-btn" onClick={this.closeModal}>
-                <Text className="explain-btn-text">我知道了</Text>
+              <Button className={styles["explain-btn"]} onClick={this.closeModal}>
+                <Text className={styles["explain-btn-text"]}>我知道了</Text>
               </Button>
             </View>
           </Modal>
@@ -134,21 +134,21 @@ export class LineWrap extends Component<LineWrapProps, any> {
             );
           }
           return (
-            <View key={loan.name} className="input-content">
-              <View className="input-content__label">
-                <Text className="input-content__label-text">{loan.name}</Text>
+            <View key={loan.name} className={styles["input-content"]}>
+              <View className={styles["input-content__label"]}>
+                <Text className={styles["input-content__label-text"]}>{loan.name}</Text>
                 {loan.icon && (
                   <View onClick={this.showExplain(loan.explain)}>
                     <Image
-                      className="input-content__label-icon"
+                      className={styles["input-content__label-icon"]}
                       src={loan.icon}
                     />
                   </View>
                 )}
               </View>
-              <View className="value-wrap">
+              <View className={styles["value-wrap"]}>
                 {loan.type === "selector" ? (
-                  <View className="picker-box">
+                  <View className={styles["picker-box"]}>
                     <Pciker
                       mode="selector"
                       title={loan.name}
@@ -157,7 +157,7 @@ export class LineWrap extends Component<LineWrapProps, any> {
                       range={loan.range}
                       onChange={this.handlePickerChange(loan, index)}
                     >
-                      <Text className="picker-box__picker__text">
+                      <Text className={styles["picker-box__picker__text"]}>
                         {loan.range[valueIndex] && loan.range[valueIndex].label}
                       </Text>
                     </Pciker>
@@ -169,7 +169,7 @@ export class LineWrap extends Component<LineWrapProps, any> {
                     keyboardType={loan.keyboardType}
                     type={loan.inputType || "text"}
                     maxLength={loan.maxLength}
-                    className="input"
+                    className={styles["input"]}
                     style={loan.valueStyle || {}}
                     disabled={
                       process.env.TARO_ENV !== "h5" ? loan.readOnly : false
@@ -188,17 +188,17 @@ export class LineWrap extends Component<LineWrapProps, any> {
                     }`}
                   />
                 )}
-                <View className="unit">
+                <View className={styles["unit"]}>
                   {loan.unit === "arrowright" ? (
-                    <Image className="arrow-right" src={RIGHT_ARROW} />
+                    <Image className={styles["arrow-right"]} src={RIGHT_ARROW} />
                   ) : (
-                    <Text className="unit__text" style={loan.unitStyle}>
+                    <Text className={styles["unit__text"]} style={loan.unitStyle}>
                       {loan.unit}
                     </Text>
                   )}
                 </View>
               </View>
-              <Text className="input-content-line" />
+              <Text className={styles["input-content-line"]} />
             </View>
           );
         })}

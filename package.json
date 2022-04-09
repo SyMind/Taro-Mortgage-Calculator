@@ -14,6 +14,7 @@
     "build:alipay": "taro build --type alipay",
     "build:tt": "taro build --type tt",
     "build:h5": "taro build --type h5",
+    "build:nextjs": "taro build --type nextjs",
     "build:rn": "taro build --type rn",
     "build:rn-ios": "taro build --type rn --platform ios",
     "build:rn-android": "taro build --type rn --platform android",
@@ -25,6 +26,7 @@
     "dev:alipay": "npm run build:alipay -- --watch",
     "dev:tt": "npm run build:tt -- --watch",
     "dev:h5": "npm run build:h5 -- --watch",
+    "dev:nextjs": "npm run build:nextjs -- --watch",
     "dev:rn": "npm run build:rn -- --watch --qr",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:jd": "npm run build:jd -- --watch",
@@ -58,11 +60,14 @@
     "@tarojs/runtime": "^3.3.17",
     "@tarojs/taro": "^3.3.17",
     "@tarojs/taro-rn": "^3.3.17",
+    "classnames": "^2.3.1",
     "lodash": "4.17.21",
+    "next": "^12.1.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-native": "^0.66.1",
-    "taro-ui": "^3.0.0-alpha.3"
+    "taro-ui": "^3.0.0-alpha.3",
+    "tarojs-plugin-platform-nextjs": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",

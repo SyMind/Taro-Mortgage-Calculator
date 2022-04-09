@@ -5,27 +5,27 @@
  * @Last Modified by: qiuz
  */
 
-import React from "react";
+// import React from "react";
 import { ComponentOptions, FunctionComponent } from '@tarojs/taro';
-import { AtModal } from 'taro-ui';
-import './index.scss';
-import { View, Image } from '@tarojs/components';
-import { CLOSE_ICON } from './constant';
+// import { AtModal } from 'taro-ui';
+// import styles from './index.module.scss';
+// import { View, Image } from '@tarojs/components';
+// import { CLOSE_ICON } from './constant';
 import { TaroModalProps } from './type';
 
 const TaroModal: FunctionComponent<TaroModalProps> & {
   options?: ComponentOptions;
-} = (props) => {
-  const { visible = false, closable = false, onClose = () => {} } = props;
-
-  return (
-    <AtModal isOpened={visible}>
-      {closable && (
-        <Image src={CLOSE_ICON} onClick={onClose} className="at-modal-content-close-iocn" />
-      )}
-      <View className="at-modal-content">{props.children}</View>
-    </AtModal>
-  );
+} = () => {
+  // const { visible = false, closable = false, onClose = () => {} } = props;
+  return null;
+  // return (
+  //   <AtModal isOpened={visible}>
+  //     {closable && (
+  //       <Image src={CLOSE_ICON} onClick={onClose} className={styles["at-modal-content-close-iocn"]} />
+  //     )}
+  //     <View className={styles["at-modal-content"]}>{props.children}</View>
+  //   </AtModal>
+  // );
 };
 
 TaroModal.options = {

@@ -8,7 +8,8 @@
 import { Color, ComponentOptions } from "@tarojs/taro";
 import { View } from "@tarojs/components";
 import React, { FunctionComponent, CSSProperties } from "react";
-import "./index.scss";
+import classNames from 'classnames';
+import styles from "./index.module.scss";
 import { isArray } from "@utils";
 
 interface ShadowOffset {
@@ -60,14 +61,14 @@ const BoxShadow: FunctionComponent<BoxShadowProps> & {
   );
   return !IS_WEAPP ? (
     <View
-      className={`box-shadow__content ${className}`}
+      className={classNames(styles["box-shadow__content"], className)}
       style={propsStyle}
       {...rest}
     >
       {props.children}
     </View>
   ) : (
-    <View className={`box-shadow__content ${className}`} style={propsStyle}>
+    <View className={classNames(styles["box-shadow__content"], className)} style={propsStyle}>
       {props.children}
     </View>
   );
